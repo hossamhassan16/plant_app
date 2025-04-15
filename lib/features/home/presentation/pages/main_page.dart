@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 // import 'package:plant_app/features/home/presentation/pages/camera.dart';
 import 'package:plant_app/features/home/presentation/pages/home/home_page.dart';
-import 'package:plant_app/features/home/presentation/pages/setting_page.dart';
+import 'package:plant_app/features/home/presentation/pages/home/settings/setting_page.dart';
 
 class main_page extends StatefulWidget {
   const main_page({super.key});

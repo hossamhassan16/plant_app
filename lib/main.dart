@@ -4,13 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plant_app/features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
 import 'package:plant_app/features/auth/presentation/pages/login_page.dart';
 import 'package:plant_app/features/auth/presentation/pages/registeration_page.dart';
+import 'package:plant_app/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:plant_app/features/home/presentation/pages/cubits/articles_cubit/articles_cubit.dart';
 import 'package:plant_app/features/home/presentation/pages/cubits/chat_cubit/chat_cubit.dart';
 import 'package:plant_app/features/home/presentation/pages/home/articles_page.dart';
 import 'package:plant_app/features/home/presentation/pages/home/chatbot_page.dart';
 import 'package:plant_app/features/home/presentation/pages/home/greenhouse_page.dart';
+import 'package:plant_app/features/home/presentation/pages/home/settings/cubits/change_password_cubit/change_password_cubit.dart';
 import 'package:plant_app/features/home/presentation/pages/main_page.dart';
-import 'package:plant_app/features/home/presentation/pages/setting_page.dart';
+import 'package:plant_app/features/home/presentation/pages/home/settings/setting_page.dart';
 import 'package:plant_app/features/onboarding/presentation/pages/onboard_page.dart';
 import 'package:plant_app/features/onboarding/presentation/pages/onboard_screen.dart';
 import 'package:plant_app/firebase_options.dart';
@@ -39,6 +41,9 @@ class PlantApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ArticlesCubit(),
         ),
+        BlocProvider(
+          create: (context) => ChangePasswordCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -53,6 +58,7 @@ class PlantApp extends StatelessWidget {
           "SettingsPage": (context) => const SettingsPage(),
           ChatbotPage.id: (context) => const ChatbotPage(),
           ArticlesPage.id: (context) => const ArticlesPage(),
+          "ResetPasswordPage": (context) => const ResetPasswordPage(),
         },
       ),
     );

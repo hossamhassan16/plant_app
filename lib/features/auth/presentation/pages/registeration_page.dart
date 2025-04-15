@@ -17,6 +17,11 @@ class RegisterationPage extends StatefulWidget {
 class _RegisterationPageState extends State<RegisterationPage> {
   String? email;
   String? password;
+  bool _obscurePassword = true;
+
+  String? confirmPassword;
+  bool _obscureConfirmPassword = true;
+
   GlobalKey<FormState> formKey = GlobalKey();
   bool isLoading = false;
 
@@ -46,9 +51,9 @@ class _RegisterationPageState extends State<RegisterationPage> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color.fromARGB(255, 171, 210, 249), // Light Blue
-                    Color(0xFFF5F7DC), // Light Yellow
-                    Color(0xFFDFFFE0), // Very Light Green
+                    Color.fromARGB(255, 171, 210, 249),
+                    Color(0xFFF5F7DC),
+                    Color(0xFFDFFFE0),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -65,9 +70,7 @@ class _RegisterationPageState extends State<RegisterationPage> {
                         "assets/images/signup.png",
                         height: 200,
                       ),
-                      SizedBox(
-                        height: 32,
-                      ),
+                      const SizedBox(height: 32),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -91,22 +94,55 @@ class _RegisterationPageState extends State<RegisterationPage> {
                       const SizedBox(height: 10),
                       CustomTextFormField(
                         prefixIcon: Icon(Icons.lock),
-                        obsecureText: true,
+                        obsecureText: _obscurePassword,
                         hintText: "Password",
                         onChanged: (data) {
                           password = data;
                         },
+                        suffixIcon: IconButton(
+                          icon: Icon(_obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                          onPressed: () {
+                            setState(() {
+                              _obscurePassword = !_obscurePassword;
+                            });
+                          },
+                        ),
                       ),
                       const SizedBox(height: 10),
+                      CustomTextFormField(
+                        prefixIcon: Icon(Icons.lock_outline),
+                        obsecureText: true,
+                        hintText: "Confirm Password",
+                        onChanged: (data) {
+                          confirmPassword = data;
+                        },
+                        suffixIcon: IconButton(
+                          icon: Icon(_obscureConfirmPassword
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                          onPressed: () {
+                            setState(() {
+                              _obscureConfirmPassword =
+                                  !_obscureConfirmPassword;
+                            });
+                          },
+                        ),
+                      ),
                       const SizedBox(height: 20),
                       Center(
                         child: NextAnimatedButton(
                           onTap: () async {
                             if (formKey.currentState!.validate()) {
-                              BlocProvider.of<AuthBloc>(context).add(
-                                RegisterEvent(
-                                    email: email!, password: password!),
-                              );
+                              if (password != confirmPassword) {
+                                ShowSnackBar(context, "Passwords do not match");
+                              } else {
+                                BlocProvider.of<AuthBloc>(context).add(
+                                  RegisterEvent(
+                                      email: email!, password: password!),
+                                );
+                              }
                             }
                           },
                           text: "Sign up",

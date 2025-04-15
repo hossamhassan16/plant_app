@@ -17,6 +17,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String? email;
   String? password;
+  bool _obscurePassword = true;
+
   GlobalKey<FormState> formKey = GlobalKey();
   bool isLoading = false;
 
@@ -90,11 +92,37 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 10),
                     CustomTextFormField(
                       prefixIcon: Icon(Icons.lock),
-                      obsecureText: true,
+                      obsecureText: _obscurePassword,
                       onChanged: (data) {
                         password = data;
                       },
+                      suffixIcon: IconButton(
+                        icon: Icon(_obscurePassword
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
+                      ),
                       hintText: "Password",
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'ResetPasswordPage');
+                        },
+                        child: const Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Center(
