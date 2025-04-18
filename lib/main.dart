@@ -5,14 +5,16 @@ import 'package:plant_app/features/auth/presentation/blocs/auth_bloc/auth_bloc.d
 import 'package:plant_app/features/auth/presentation/pages/login_page.dart';
 import 'package:plant_app/features/auth/presentation/pages/registeration_page.dart';
 import 'package:plant_app/features/auth/presentation/pages/reset_password_page.dart';
+import 'package:plant_app/features/home/presentation/pages/camera_page.dart';
 import 'package:plant_app/features/home/presentation/pages/cubits/articles_cubit/articles_cubit.dart';
 import 'package:plant_app/features/home/presentation/pages/cubits/chat_cubit/chat_cubit.dart';
 import 'package:plant_app/features/home/presentation/pages/home/articles_page.dart';
 import 'package:plant_app/features/home/presentation/pages/home/chatbot_page.dart';
 import 'package:plant_app/features/home/presentation/pages/home/greenhouse_page.dart';
-import 'package:plant_app/features/home/presentation/pages/home/settings/cubits/change_password_cubit/change_password_cubit.dart';
+import 'package:plant_app/features/home/presentation/pages/notification_page.dart';
+import 'package:plant_app/features/home/presentation/pages/settings/cubits/change_password_cubit/change_password_cubit.dart';
 import 'package:plant_app/features/home/presentation/pages/main_page.dart';
-import 'package:plant_app/features/home/presentation/pages/home/settings/setting_page.dart';
+import 'package:plant_app/features/home/presentation/pages/settings/setting_page.dart';
 import 'package:plant_app/features/onboarding/presentation/pages/onboard_page.dart';
 import 'package:plant_app/features/onboarding/presentation/pages/onboard_screen.dart';
 import 'package:plant_app/firebase_options.dart';
@@ -49,7 +51,7 @@ class PlantApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: OnboardScreen.routeName,
         routes: {
-          OnboardScreen.routeName: (context) => OnboardPage(),
+          OnboardScreen.routeName: (context) => const OnboardPage(),
           "LoginPage": (context) => const LoginPage(),
           "RegisterationPage": (context) => const RegisterationPage(),
           "HomePage": (context) => const main_page(),
@@ -59,6 +61,8 @@ class PlantApp extends StatelessWidget {
           ChatbotPage.id: (context) => const ChatbotPage(),
           ArticlesPage.id: (context) => const ArticlesPage(),
           "ResetPasswordPage": (context) => const ResetPasswordPage(),
+          "NotificationPage": (context) => const NotificationsPage(),
+          "CameraPage": (context) => const CameraPage(),
         },
       ),
     );

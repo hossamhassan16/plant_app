@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:plant_app/features/auth/presentation/pages/login_page.dart';
-import 'package:plant_app/features/home/presentation/pages/home/settings/change_password_page.dart';
+import 'package:plant_app/features/home/presentation/pages/settings/change_password_page.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);

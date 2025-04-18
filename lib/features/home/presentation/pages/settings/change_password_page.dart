@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plant_app/features/auth/presentation/widgets/custom_text_form_field.dart';
-import 'package:plant_app/features/home/presentation/pages/home/settings/cubits/change_password_cubit/change_password_cubit.dart';
+import 'package:plant_app/features/home/presentation/pages/settings/cubits/change_password_cubit/change_password_cubit.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({super.key});

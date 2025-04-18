@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-// import 'package:plant_app/features/home/presentation/pages/camera.dart';
+import 'package:plant_app/features/home/presentation/pages/camera_page.dart';
 import 'package:plant_app/features/home/presentation/pages/home/home_page.dart';
-import 'package:plant_app/features/home/presentation/pages/home/settings/setting_page.dart';
+import 'package:plant_app/features/home/presentation/pages/notification_page.dart';
+import 'package:plant_app/features/home/presentation/pages/settings/setting_page.dart';
 
 class main_page extends StatefulWidget {
   const main_page({super.key});
@@ -21,18 +22,11 @@ class _main_pageState extends State<main_page> {
   }
 
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text(
-      'Camera',
-      style: optionStyle,
-    ),
-    Text(
-      'Notifications',
-      style: optionStyle,
-    ),
+    CameraPage(),
+    NotificationsPage(),
     SettingsPage(),
   ];
   @override
