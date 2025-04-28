@@ -29,24 +29,33 @@ class _ArticlesPageState extends State<ArticlesPage> {
         backgroundColor: Colors.green,
         centerTitle: true,
       ),
-      body: BlocBuilder<ArticlesCubit, ArticlesState>(
-        builder: (context, state) {
-          if (state is ArticlesLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is ArticlesError) {
-            return Center(child: Text(state.error));
-          } else if (state is ArticlesSuccess) {
-            return ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: state.articles.length,
-              itemBuilder: (context, index) {
-                return ArticleCard(article: state.articles[index]);
-              },
-            );
-          } else {
-            return const SizedBox();
-          }
-        },
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFE8F5E9), Color(0xFFA5D6A7)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: BlocBuilder<ArticlesCubit, ArticlesState>(
+          builder: (context, state) {
+            if (state is ArticlesLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is ArticlesError) {
+              return Center(child: Text(state.error));
+            } else if (state is ArticlesSuccess) {
+              return ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: state.articles.length,
+                itemBuilder: (context, index) {
+                  return ArticleCard(article: state.articles[index]);
+                },
+              );
+            } else {
+              return const SizedBox();
+            }
+          },
+        ),
       ),
     );
   }

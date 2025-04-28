@@ -45,6 +45,7 @@ class _CameraPageState extends State<CameraPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: const Text(
           "camera",
@@ -62,7 +63,7 @@ class _CameraPageState extends State<CameraPage> {
               height: 300,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.grey[300],
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: _image != null
